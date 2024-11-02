@@ -1,1 +1,1 @@
-# brainnotes
+# Brain notes 🧠
