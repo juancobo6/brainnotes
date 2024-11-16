@@ -1,6 +1,8 @@
 import json
 from itertools import islice
 
+from bond_brainnotes import Bond, Prompt
+
 NOTES_PATH = r"C:\Users\JuanC\Documents\Projectos\brainnotes\notes"
 
 
@@ -29,7 +31,10 @@ class Brainnote:
                 break
             else:
                 self.parse_paragraph(user_input)
-        print("Saving note...")
+        print("Applying AI to the note...")
+
+        self.apply_ai()
+
         with open(self.path, 'w') as f:
             json.dump(self.note, f, indent=4)
 
@@ -44,6 +49,11 @@ class Brainnote:
     def parse_paragraph(self, user_input):
         self.note["content"].append({"index": self.index, "type": "4", "content": user_input, "revision": ""})
         self.index += 1
+
+
+    def apply_ai(self):
+        raise NotImplementedError
+
 
 
 def intro():
